@@ -12,5 +12,8 @@ namespace CoffeeShopApi.Models
         public string Name { get; set; }
 
         public string Image { get; set; }
+
+        //used for one-to-many relationship navigation between Menu and SubMenu
+        public ICollection<SubMenu> SubMenus { get; set; }
     }
 }
