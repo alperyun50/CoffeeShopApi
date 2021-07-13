@@ -13,7 +13,7 @@ namespace CoffeeShopApi.Controllers
     [ApiController]
     public class MenusController : ControllerBase
     {
-        ExpressoDbContext _expressoDbContext;
+        private ExpressoDbContext _expressoDbContext;
 
         public MenusController(ExpressoDbContext expressoDbContext)
         {
@@ -26,6 +26,18 @@ namespace CoffeeShopApi.Controllers
             // used eager loading - search for it
             var menus = _expressoDbContext.Menus.Include("SubMenus");
             return Ok(menus);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetMenu(int id)
+        {
+            var menu = _expressoDbContext.Menus.Include("SubMenus").FirstOrDefault(m=>m.Id==id);
+            if(menu==null)
+            {
+                return NotFound();
+            }
+
+            return Ok(menu);
         }
     }
 }
