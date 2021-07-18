@@ -37,7 +37,7 @@ namespace CoffeeShopApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
             //connection string for entity
-            services.AddDbContext<ExpressoDbContext>(option => option.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ExpressDb;"));
+            services.AddDbContext<ExpressoDbContext>(option => option.UseSqlServer(@"Data Source=ALPER\ALPERNET;Initial Catalog=ExpressDb;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
